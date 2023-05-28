@@ -60,12 +60,8 @@ footer {
     text-align: center;
 }
 
-@media only screen and (max-width: 600px) {
+@media (max-width: 768px) {
     body {
         overflow-x: scroll;
-    }
-    
-    code {
-        white-space: pre-wrap;
     }
 }
