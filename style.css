@@ -37,7 +37,10 @@ header img {
     margin-left: 20px;
 }
 
-.portifolio, .projetos, .experiencia, .cursos {
+.portifolio,
+.projetos,
+.experiencia,
+.cursos {
     margin-top: 30px;
 }
 
@@ -45,7 +48,8 @@ h4 {
     padding-top: 8px;
 }
 
-.portifolio p, .projetos p {
+.portifolio p,
+.projetos p {
     padding-top: 5px;
 }
 
@@ -54,4 +58,14 @@ footer {
     background-color: blue;
     padding: 3px;
     text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        overflow-x: scroll;
+    }
+    
+    pre {
+        white-space: pre-wrap;
+    }
 }
