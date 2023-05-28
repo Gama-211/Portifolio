@@ -65,7 +65,7 @@ footer {
         overflow-x: scroll;
     }
     
-    pre {
+    code {
         white-space: pre-wrap;
     }
 }
