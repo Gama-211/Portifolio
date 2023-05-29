@@ -19,15 +19,149 @@
             <p>Desenvolvedor Web Junior</p>
             <p>Telefone: (93) 98406-3178</p>
             <p>E-mail: <a href="malito:gsfonseca2005@gmail.com">gsfonseca2005@gmail.com</a></p>
+
+            <div class="sociaisRedes">
+                <a href="https://github.com/Gama-211?tab=repositories" target="_blank"> <img src="/icons/github.png" alt="Imagem Github"></a>
+                <a href="https://www.linkedin.com/in/gamaliel-fonseca-692b76249/" target="_blank"> <img src="/icons/linkedin.png" alt="Imagem linkedin"></a>
+                <a href="https://www.instagram.com/_gama.sf/" target="_blank"> <img src="/icons/instagram.png" alt="Imagem Instagram"></a>
+                <a href="https://wa.me/5593984063178" target="_blank"> <img src="/icons/whatsapp.png" alt="Imagem whatsapp"></a>
+            </div>
+
         </div>
 
         <div class="portifolio">
             <h2>Meu Portifólio</h2>
-            <p>Me chamo Gamaliel Santos da Fonseca, mais conhecido como Gama. <br> Tenho 18 anos e estou cursando Analise e Desenvolvimentos de Sistemas. <br> Ja desenovolvir alguns projetos pessoais, vou deixar uns destacados abaixo.</p>
+            <p>Me chamo Gamaliel Santos da Fonseca, mais conhecido como Gama. Tenho 18 anos e estou cursando Analise e Desenvolvimentos de Sistemas. <br> Ja desenovolvir alguns projetos pessoais, vou deixar uns destacados abaixo.</p>
         </div>
     
     <div class="projetos">
-        <h3>DividendLog</h3> <p>Site com objetivo de registrar dividendos de forma bem simples. <br> Coloquei algumas opções como a de ver sua lista de dividendos, grafico de dividendos por empresa e grafico de dividendos mensais.</p>
+        <h3>WebSite DividendLog</h3>
+        <div class="roleta">
+            <div class="roleta-container">
+                <img src="/RoletadeFotos/img1.png" alt="">
+                <img src="/RoletadeFotos/img2.png" alt="">
+                <img src="/RoletadeFotos/img3.png" alt="">
+                <img src="/RoletadeFotos/img4.png" alt="">
+            </div>
+        </div>
+        
+        <div class="pontos">
+            <span class="ponto ativo"></span>
+            <span class="ponto"></span>
+            <span class="ponto"></span>
+            <span class="ponto"></span>
+        </div>
+    
+        <script>
+            var roletaContainer = document.querySelector('.roleta-container');
+            var imagens = document.querySelectorAll('.roleta img');
+            var pontos = document.querySelectorAll('.ponto');
+            var indexAtual = 0;
+            
+            function exibirImagem(index) {
+                var translateXValue = index * -25;
+                roletaContainer.style.transform = 'translateX(' + translateXValue + '%)';
+                
+                for (var i = 0; i < pontos.length; i++) {
+                    pontos[i].classList.remove('ativo');
+                }
+                
+                pontos[index].classList.add('ativo');
+            }
+            
+            function rolarImagens() {
+                indexAtual++;
+                
+                if (indexAtual >= imagens.length) {
+                    indexAtual = 0;
+                }
+                
+                exibirImagem(indexAtual);
+            }
+            
+            setInterval(rolarImagens, 3000);
+            
+            for (var i = 0; i < pontos.length; i++) {
+                pontos[i].addEventListener('click', function() {
+                    var index = Array.prototype.indexOf.call(pontos, this);
+                    indexAtual = index;
+                    exibirImagem(indexAtual);
+                });
+            }
+            
+            var isDragging = false;
+            var startX;
+            var currentTranslateX = 0;
+            var previousTranslateX = 0;
+            var animationId;
+            
+            roletaContainer.addEventListener('mousedown', dragStart);
+            roletaContainer.addEventListener('touchstart', dragStart);
+            roletaContainer.addEventListener('mouseup', dragEnd);
+            roletaContainer.addEventListener('touchend', dragEnd);
+            roletaContainer.addEventListener('mouseleave', dragEnd);
+            roletaContainer.addEventListener('mousemove', drag);
+            roletaContainer.addEventListener('touchmove', drag);
+            
+            function dragStart(event) {
+                event.preventDefault();
+                
+                if (event.type === 'touchstart') {
+                    startX = event.touches[0].clientX;
+                } else {
+                    startX = event.clientX;
+                }
+                
+                isDragging = true;
+                animationId = requestAnimationFrame(animation);
+                roletaContainer.classList.add('grabbing');
+            }
+            
+            function drag(event) {
+                if (!isDragging) return;
+                
+                event.preventDefault();
+                
+                var currentX;
+                
+                if (event.type === 'touchmove') {
+                    currentX = event.touches[0].clientX;
+                } else {
+                    currentX = event.clientX;
+                }
+                
+                var diffX = currentX - startX;
+                currentTranslateX = previousTranslateX + diffX;
+                
+                roletaContainer.style.transform = 'translateX(' + currentTranslateX + 'px)';
+            }
+            
+            function dragEnd() {
+                cancelAnimationFrame(animationId);
+                
+                var threshold = 100;
+                
+                if (currentTranslateX > threshold) {
+                    indexAtual--;
+                } else if (currentTranslateX < -threshold) {
+                    indexAtual++;
+                }
+                
+                exibirImagem(indexAtual);
+                
+                roletaContainer.classList.remove('grabbing');
+                
+                previousTranslateX = currentTranslateX;
+                isDragging = false;
+            }
+            
+            function animation() {
+                rolarImagens();
+                animationId = requestAnimationFrame(animation);
+            }
+        </script>
+
+        <p>Site com objetivo de registrar dividendos de forma bem simples. <br> Coloquei algumas opções como a de ver sua lista de dividendos, grafico de dividendos por empresa e grafico de dividendos mensais. <br> Acesse aqui: <a href="http://dividendlog.epizy.com/index.html" target="_blank">DividendLog</a></p>
     </div>
 
     <div class="experiencia">

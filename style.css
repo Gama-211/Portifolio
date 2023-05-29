@@ -6,6 +6,7 @@
 * {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -31,14 +32,67 @@ header img {
     margin-left: 20px;
 }
 
+.sociaisRedes {
+    margin-top: 10px;
+    border-top: 2px solid #263241;
+    border-bottom: 2px solid #263241;
+}
+
+.sociaisRedes img {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    width: 50px;
+}
+
 .corpo {
-    max-width: 500px;
-    margin: 50px 0;
-    padding: 0 20px;
+    max-width: 600px;
+    margin: auto;
+    padding-top: 30px;
 }
 
 .info {
     margin-bottom: 30px;
+}
+
+.roleta {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    align-items: center;
+}
+
+.roleta-container {
+    display: flex;
+    width: 400%;
+    height: 100%;
+    transition: transform 0.7s ease-in-out;
+}
+
+.roleta img {
+    width: 25%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.pontos {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
+.ponto {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ccc;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.ponto.ativo {
+    background-color: #333;
 }
 
 .portifolio,
@@ -48,8 +102,28 @@ header img {
     margin-top: 30px;
 }
 
+.projetos {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-top: 2px solid #263241;
+    border-bottom: 2px solid #263241;
+}
+
+h3 {
+    margin-bottom: 10px;
+}
+
 h4 {
     padding-top: 8px;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    color: blue;
 }
 
 .portifolio p,
@@ -67,13 +141,14 @@ footer {
 @media (max-width: 768px) {
     .corpo {
         max-width: 100%;
+        padding: 0 20px;
     }
-    
+
     header img {
-        width: 80%;
+        width: 100%;
         margin: 0;
     }
-    
+
     .info,
     .portifolio,
     .projetos,
